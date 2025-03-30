@@ -1,11 +1,13 @@
 package com.system.event_management.exception;
 
 import com.system.event_management.model.ExceptionBean;
+import io.swagger.v3.oas.annotations.Hidden;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+@Hidden
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
@@ -24,8 +26,8 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(new ExceptionBean(ex.getMessage()),ex.getHttpStatus());
     }
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<ExceptionBean> handleGenericException(Exception ex) {
-        return new ResponseEntity<>(new ExceptionBean(ex.getMessage()),HttpStatus.INTERNAL_SERVER_ERROR );
-    }
+//    @ExceptionHandler(Exception.class)
+//    public ResponseEntity<ExceptionBean> handleGenericException(Exception ex) {
+//        return new ResponseEntity<>(new ExceptionBean(ex.getMessage()),HttpStatus.INTERNAL_SERVER_ERROR );
+//    }
 }
